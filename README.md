@@ -1,10 +1,8 @@
- # A Computational Study of the Basal Ganglia Loops in Incremental Decision Making
+#A Computational Study of the Basal Ganglia Loops in Incremental Decision Making
 
 <p align="center">
   <strong>A biologically inspired computational model of incremental learning and decision making</strong>
-</p>
-
----
+</p>---
 
 Overview
 
@@ -40,7 +38,7 @@ Model
 
 The model consists of interconnected neural populations representing sensory processing, memory, basal ganglia circuits, thalamic output, motor response, and dopaminergic modulation.
 
-Main neural populations
+Main Neural Populations
 
 Population| Function
 IT| Sensory feature representation
@@ -78,19 +76,19 @@ In the current implementation, feature sampling follows a randomized sampling pr
 
 Basal Ganglia Pathways
 
-Direct pathway
+Direct Pathway
 
 The D1 striatal pathway projects toward the GPi and contributes to the facilitation of selected actions.
 
-Indirect pathway
+Indirect Pathway
 
 The D2 striatal pathway interacts with the GPe and contributes to the suppression of competing action representations.
 
-Hyperdirect pathway
+Hyperdirect Pathway
 
 The IT → STN → GPi pathway provides a rapid excitatory influence on the GPi and can contribute to suppressing or delaying premature responses.
 
-Central idea
+Central Idea
 
 The primary computational focus is the interaction among the direct, indirect, and hyperdirect pathways during incremental learning and decision formation.
 
@@ -125,17 +123,17 @@ A categorical decision is made when the strongest PM response exceeds the respon
 
 Conceptually:
 
-             PM activity
-                 │
-                 ▼
-       ┌─────────────────────┐
-       │ Response threshold  │
-       │        +            │
-       │ Winner margin       │
-       └──────────┬──────────┘
-                  │
-                  ▼
-             Decision
+                    PM activity
+                         │
+                         ▼
+              ┌─────────────────────┐
+              │ Response threshold  │
+              │         +           │
+              │    Winner margin    │
+              └──────────┬──────────┘
+                         │
+                         ▼
+                      Decision
 
 ---
 
