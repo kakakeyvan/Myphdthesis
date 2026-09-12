@@ -1,62 +1,69 @@
+
+
+
+
 # A Computational Study of the Basal Ganglia Loops in Incremental Decision Making
 
-**A biologically inspired computational model of incremental learning and decision making**
+## A biologically inspired computational model of incremental learning and decision making
+
+<p align="center">
+  <strong>Computational Neuroscience · Basal Ganglia · Reinforcement Learning · Incremental Decision Making</strong>
+</p>
 
 ---
-<p align="center">
-  <strong>A biologically inspired computational model of incremental learning and decision making</strong>
-</p>---
 
 Overview
 
 This repository contains the computational implementation accompanying the PhD dissertation:
 
-«A Computational Study of the Basal Ganglia Loops in Incremental Decision Making»
+“A Computational Study of the Basal Ganglia Loops in Incremental Decision Making”  
+Keyvan Yahya (2025), Dr. rer. nat.
 
-The project investigates how visual information acquired incrementally over time can be integrated to support category learning and decision making through interactions within cortico-basal ganglia-thalamo-cortical circuits.
+The project investigates how partial and sequentially acquired visual information can be integrated over time to support category learning and decision making through interactions within cortico–basal ganglia–thalamo–cortical circuits.
 
-The model focuses on the dynamic interaction of the three principal basal ganglia pathways:
+The model emphasizes the dynamic interplay among the three principal basal ganglia pathways:
 
-- Direct pathway — D1 striatal pathway
-- Indirect pathway — D2 striatal pathway
-- Hyperdirect pathway — STN pathway
-
-Rather than considering these pathways independently, the model investigates how their interaction contributes to competition between alternative actions and the emergence of a categorical decision.
+- Direct pathway (D1)  
+- Indirect pathway (D2)  
+- Hyperdirect pathway (STN)
 
 ---
 
 Research Question
 
-Many decisions must be made before all relevant information has been observed.
+Many real-world decisions must be made before all relevant information is available.
 
-This project therefore addresses the following computational question:
+> How can partial and sequentially acquired information be integrated over time to support a categorical decision?
 
-«How can partial and sequentially acquired information be integrated over time to support a categorical decision?»
+The model provides a biologically inspired framework using:
 
-The model provides a biologically inspired framework for studying this question using basal ganglia circuits, reinforcement-based learning, and incremental visual information processing.
+- Basal ganglia circuits  
+- Reinforcement-based learning  
+- Incremental visual information processing  
 
 ---
 
-Model
+Model Architecture
 
 The model consists of interconnected neural populations representing sensory processing, memory, basal ganglia circuits, thalamic output, motor response, and dopaminergic modulation.
 
 Main Neural Populations
 
-Population| Function
-IT| Sensory feature representation
-MTL| Representation of previously sampled information
-StrD1| D1-type striatal population
-StrD2| D2-type striatal population
-STN| Hyperdirect pathway
-GPe| Indirect pathway
-GPi| Basal ganglia output
-Thal| Thalamic relay
-PM| Behavioral decision output
-SNc| Dopaminergic modulation and reward prediction
-PPN| Reward-related input
+| Population | Function |
+|-----------|----------|
+| IT | Sensory feature representation |
+| MTL | Memory of previously sampled features |
+| StrD1 | Direct pathway (D1-type striatum) |
+| StrD2 | Indirect pathway (D2-type striatum) |
+| STN | Hyperdirect pathway |
+| GPe | Indirect pathway relay |
+| GPi | Basal ganglia output |
+| Thal | Thalamic relay |
+| PM | Behavioral decision output |
+| SNc | Dopaminergic modulation & reward prediction |
+| PPN | Reward-related input |
 
-The network contains both fixed and plastic synaptic connections. Learning is modulated by activity-dependent traces and dopamine-related signals.
+The network includes both fixed and plastic synaptic connections. Learning is modulated by activity-dependent traces and dopamine-related signals.
 
 ---
 
@@ -66,126 +73,125 @@ The model performs a visual categorization task using schematic fish exemplars.
 
 Each exemplar is defined by four feature dimensions:
 
-- DF — Dorsal Fin
-- TF — Tail Fin
-- VF — Ventral Fin
-- MA — Mouth Area
+- Dorsal Fin (DF)  
+- Tail Fin (TF)  
+- Ventral Fin (VF)  
+- Mouth Area (MA)
 
-Information is acquired incrementally rather than presenting the complete stimulus representation simultaneously.
-
-In the current implementation, feature sampling follows a randomized sampling process. Activity associated with previously sampled features can persist and interact with subsequently acquired information, allowing the model to integrate information across successive sampling events.
+Information is acquired incrementally, allowing previously sampled features to leave persistent activity traces that interact with newly acquired information.
 
 ---
 
 Basal Ganglia Pathways
 
-Direct Pathway
+Direct Pathway (D1)
+Facilitates selected actions via StrD1 → GPi projections.
 
-The D1 striatal pathway projects toward the GPi and contributes to the facilitation of selected actions.
+Indirect Pathway (D2)
+Suppresses competing actions via StrD2 → GPe → GPi interactions.
 
-Indirect Pathway
-
-The D2 striatal pathway interacts with the GPe and contributes to the suppression of competing action representations.
-
-Hyperdirect Pathway
-
-The IT → STN → GPi pathway provides a rapid excitatory influence on the GPi and can contribute to suppressing or delaying premature responses.
+Hyperdirect Pathway (STN)
+Provides rapid excitatory input to GPi, helping suppress premature responses.
 
 Central Idea
+The model focuses on how direct, indirect, and hyperdirect pathways jointly shape:
 
-The primary computational focus is the interaction among the direct, indirect, and hyperdirect pathways during incremental learning and decision formation.
-
----
-
-Learning
-
-The model incorporates dopamine-modulated synaptic plasticity across multiple connections, including:
-
-IT → MTL
-IT → StrD1
-IT → StrD2
-MTL → StrD1
-MTL → StrD2
-IT → STN
-StrD1 → GPi
-StrD2 → GPe
-STN → GPi
-StrD1 → SNc
-
-Activity-dependent traces provide a temporal mechanism for associating neural activity with subsequent dopaminergic modulation.
-
-The SNc population additionally implements reward-prediction dynamics based on network activity and reward-related input.
+- Competition  
+- Decision timing  
+- Action selection  
 
 ---
 
-## Decision Mechanism
+Learning Mechanisms
 
-The final behavioral response is generated through the PM population.
+Dopamine-modulated plasticity is implemented across multiple connections:
 
-A categorical decision is made when the strongest PM response exceeds the response threshold and sufficiently dominates the competing response.
+- IT → MTL  
+- IT → StrD1 / StrD2  
+- MTL → StrD1 / StrD2  
+- IT → STN  
+- StrD1 → GPi  
+- StrD2 → GPe  
+- STN → GPi  
+- StrD1 → SNc  
 
+Activity-dependent traces allow temporal association between neural activity and subsequent dopaminergic signals.
 
-Conceptually:
+The SNc population implements reward prediction dynamics based on network activity and reward-related input.
 
-```text
+---
+
+Decision Mechanism
+
+A categorical decision is generated through the PM population when:
+
+`
 Maximum PM activity ≥ response threshold
 AND
-Winner–competitor activity difference ≥ margin threshold
-        ↓
-Categorical decision
-```
+Winner–competitor difference ≥ margin threshold
+`
+
+This ensures decisions are both strong and confident.
+
+---
 
 Computational Framework
 
 The model is implemented in Python using the ANNarchy neural simulation framework.
 
-The main implementation is provided in:
+Main implementation notebook:
 
-incremental_decision_making_model.ipynb
+`
+incrementaldecisionmaking_model.ipynb
+`
 
-The notebook contains the model construction, neural populations, synaptic connections, learning mechanisms, experimental procedures, and analysis routines.
+The notebook includes:
+
+- Model construction  
+- Neural populations  
+- Synaptic connections  
+- Learning mechanisms  
+- Experimental procedures  
+- Analysis routines  
 
 ---
 
 Repository
 
-Repository: "kakakeyvan/Myphdthesis"
+Repository: kakakeyvan/Myphdthesis
 
-The repository is intended to provide the computational implementation associated with the dissertation and to facilitate inspection, reproduction, and further development of the model.
+This repository provides the computational implementation associated with the dissertation and supports:
 
----
-
-Dissertation
-
-Keyvan Yahya (2025)
-
-A Computational Study of the Basal Ganglia Loops in Incremental Decision Making
-
-PhD Dissertation, Dr. rer. nat.
+- Inspection  
+- Reproduction  
+- Further development  
 
 ---
 
 Citation
 
-If you use this code or model in academic work, please cite the associated dissertation:
+If you use this code or model in academic work, please cite:
 
+`bibtex
 @phdthesis{yahya2025incremental,
   author = {Yahya, Keyvan},
   title  = {A Computational Study of the Basal Ganglia Loops in Incremental Decision Making},
   year   = {2025},
   type   = {PhD Dissertation}
 }
+`
 
 ---
 
 Status
 
-Research code accompanying a PhD dissertation.
-
-The repository is under active development as the computational model and associated analyses are further organized and documented.
+Research code accompanying a PhD dissertation.  
+The repository is under active development as the computational model and analyses are further organized and documented.
 
 ---
 
 <p align="center">
   <strong>Computational Neuroscience · Basal Ganglia · Reinforcement Learning · Incremental Decision Making</strong>
 </p>
+
+---
