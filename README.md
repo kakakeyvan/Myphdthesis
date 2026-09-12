@@ -120,9 +120,9 @@ The SNc population additionally implements reward-prediction dynamics based on n
 
 ## Decision Mechanism
 
-The model produces a behavioral response through the PM population.
+The final behavioral response is generated through the PM population.
 
-A decision is made when the strongest PM response exceeds the response threshold and sufficiently dominates the competing response.
+A categorical decision is made when the strongest PM response exceeds the response threshold and sufficiently dominates the competing response.
 
 Conceptually:
 
@@ -138,6 +138,7 @@ Conceptually:
                          │
                          ▼
                       Decision
+```
 
 Computational Framework
 
