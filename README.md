@@ -127,17 +127,11 @@ A categorical decision is made when the strongest PM response exceeds the respon
 Conceptually:
 
 ```text
-                    PM activity
-                         │
-                         ▼
-              ┌─────────────────────┐
-              │ Response threshold  │
-              │         +           │
-              │    Winner margin    │
-              └──────────┬──────────┘
-                         │
-                         ▼
-                      Decision
+Maximum PM activity ≥ response threshold
+AND
+Winner–competitor activity difference ≥ margin threshold
+        ↓
+Categorical decision
 ```
 
 Computational Framework
