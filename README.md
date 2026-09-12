@@ -124,7 +124,7 @@ The final behavioral response is generated through the PM population.
 
 A categorical decision is made when the strongest PM response exceeds the response threshold and sufficiently dominates the competing response.
 
-Conceptually:
+
 Conceptually:
 
 ```text
