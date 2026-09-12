@@ -121,17 +121,20 @@ The SNc population implements reward prediction dynamics based on network activi
 
 ---
 
-Decision Mechanism
+## Decision Mechanism
 
-A categorical decision is generated through the PM population when:
+A categorical decision is generated through the PM population when two criteria are satisfied:
 
-`
+1. **Response strength:** Maximum PM activity exceeds the response threshold.
+2. **Response confidence:** The difference between the winning and competing responses exceeds the margin threshold.
+
+```text
 Maximum PM activity ≥ response threshold
 AND
 Winner–competitor difference ≥ margin threshold
-`
+```
 
-This ensures decisions are both strong and confident.
+This ensures that decisions are both **strong** and **confident**.
 
 ---
 
