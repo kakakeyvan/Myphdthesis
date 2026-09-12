@@ -1,4 +1,4 @@
-A Computational Study of the Basal Ganglia # A Computational Study of the Basal Ganglia Loops in Incremental Decision Making
+ # A Computational Study of the Basal Ganglia Loops in Incremental Decision Making
 
 <p align="center">
   <strong>A biologically inspired computational model of incremental learning and decision making</strong>
